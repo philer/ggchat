@@ -1,0 +1,199 @@
+$blue: #09f;
+$green: #3b7;
+
+* {
+    box-sizing: border-box;
+    /*transition: .3s;*/
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+    font-family: "Ubuntu", "Arial", sans-serif;
+}
+body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    height: 100%;
+    margin: 0 auto;
+    padding: .5em 0 2em;
+    background-color: #bdf;
+    color: white;
+    &.dark {
+        background-color: #111;
+        color: #eee;
+    }
+}
+#header {
+    flex: 0 0 auto;
+}
+#header h1 {
+    font-weight: 300;
+    margin: .5em 0;
+    text-align: center;
+    // text-shadow: 3px 3px 0 rgba(0, 25, 100, .2);
+    color: #bdf;
+    text-shadow: -1px -1px 0 white,
+                 1px 1px 0 rgba(0, 25, 100, .33);
+}
+#chat {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #f2f2f2;
+    .dark & {
+        background-color:  #333;
+    }
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, .25);
+}
+#chat > header {
+    display: flex;
+    align-items: center;
+    padding: .75em;
+    background-color: $blue;
+    border-bottom: 4px solid #06d;
+}
+#chat-status {
+    flex: 1 1 0;
+    font-size: .8em;
+    text-align: right;
+}
+.chat-log {
+    flex: 1 1 0;
+    padding: .5em;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: inset 0 101px 4px -100px rgba(0, 0, 0, .33),
+                inset 0 -99px 4px -100px rgba(0, 0, 0, .33);
+}
+.chat-log::after {
+    content: "";
+    display: block;
+    height: .5em;
+}
+#username-input {
+    padding: .5em;
+    border-width: 0;
+    font-weight: bold;
+    background-color: #f1f1f1;
+    border-top: 2px solid #06d;
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, .33);
+    color: $blue;
+    .dark & {
+        background-color: #222;
+    }
+}
+#message-form {
+    flex: 0 0 auto;
+    display: flex;
+    /*box-shadow: 1px 1px 6px rgba(0, 0, 0, .15);*/
+}
+#message-input {
+    flex: 1 1 0;
+    resize: none;
+    outline: none;
+    padding: .5em;
+    margin: 0;
+    border-width: 0;
+    overflow-x: hidden; /* prevent height gap caused by scrollbar */
+    line-height: 1.3em;
+    font-family: inherit;
+    background-color: #fff;
+    color: #111;
+    .dark & {
+        background-color: #222;
+        color: white;
+    }
+}
+#message-form button {
+    flex: 0 0 auto;
+    border-width: 0;
+    cursor: pointer;
+    padding: 1em;
+    font-weight: 500;
+    background-color: $blue;
+    color: white;
+    outline: none;
+    transition-duration: .2s;
+    transition-property: background, color, border;
+}
+#message-form button:hover,
+#message-form button:active,
+#message-form button:focus {
+    background-color: #3bf;
+    outline: none;
+}
+.message {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    align-items: flex-start;
+    padding-bottom: .25em;
+}
+.message-meta {
+    position: relative;
+    flex: 0 0 7em;
+    padding-right: .75em;
+    color: $blue;
+    white-space: nowrap;
+    overflow: hidden;
+    min-height: 10px;
+}
+.message-author {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.message-created-at {
+    font-size: .65em;
+    color: #999;
+}
+.message-content {
+    flex: 0 1 auto;
+    padding: .25em .5em;
+    margin-top: .25em;
+    white-space: pre-wrap;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    border-radius: 0 3px 3px 3px;
+    background-color: $blue;
+}
+.message-own {
+    flex-direction: row-reverse;
+    align-items: flex-end;
+}
+.message-own .message-content {
+    background-color: $green;
+    border-radius: 3px 3px 0 3px;
+}
+.message-own .message-author {
+    display: none;
+}
+.message-own .message-meta {
+    flex-basis: 3em;
+    padding: 0 0 0 .75em;
+    text-align: right;
+}
+.message-own .message-meta::before {
+    transform: rotate(315deg);
+    top: unset;
+    right: unset;
+    left: -11px;
+    bottom: -10px;
+    border-color: $green;
+}
+
+.message-meta::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    display: block;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-right-color: $blue;
+    transform: rotate(135deg);
+}

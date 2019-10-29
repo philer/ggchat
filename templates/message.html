@@ -1,0 +1,7 @@
+<div class="message{% if own %} message-own{% endif %}">
+  <div class="message-meta">
+    <div class="message-author">{{ message.author }}</div>
+    <div class="message-created-at">{{ message.created_at.strftime("%H:%M") }}</div>
+  </div>
+  <div class="message-content">{{ message.content }}</div>
+</div>

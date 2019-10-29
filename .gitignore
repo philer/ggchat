@@ -1,0 +1,16 @@
+# Project specific
+backups/
+*.sh
+
+# Python
+/venv
+*.pyc
+__pycache__
+/*.egg-info
+/dist
+/build
+
+# Editors, IDEs, OS files
+*~
+*.swp
+*.sublime-*
